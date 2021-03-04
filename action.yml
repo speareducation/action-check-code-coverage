@@ -1,0 +1,11 @@
+name: Spear Build Variables
+description: Outputs some variables useful for building environments.
+outputs:
+  appEnv:
+    description: The APP Environment, taken from the branch or tag.
+  release:
+    description: The release name, taken from the branch or tag.
+
+runs:
+  using: 'node12'
+  main: 'index.js'
