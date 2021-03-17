@@ -1,10 +1,19 @@
-name: Spear Build Variables
-description: Outputs some variables useful for building environments.
+name: Spear Check Code Coverage
+description: Checks code coverage against another branch and outputs the difference. Requires AWS env vars
+
+inputs:
+  bucket:
+    description: The bucket in which results are stored
+  localFile: 
+    description: The file in which code coverage results can be found.
+  remoteFile:
+    description: The file in S3 to compare
+
 outputs:
-  appEnv:
-    description: The APP Environment, taken from the branch or tag.
-  release:
-    description: The release name, taken from the branch or tag.
+  description:
+    description: A user-friendly sentence describing the state of coverage.
+  difference:
+    description: The difference in coverage as a decimal. example -5.25 or 5.25
 
 runs:
   using: 'node12'
