@@ -48,7 +48,7 @@ async function handle() {
         console.warn(error);
     }
 
-    const difference = Math.round(localCoverage - remoteCoverage, 2);
+    const difference = localCoverage - remoteCoverage;
     let description;
 
     if (difference === 0.00) {
