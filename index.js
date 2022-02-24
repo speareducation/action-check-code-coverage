@@ -54,9 +54,9 @@ async function handle() {
     if (difference === 0.00) {
         description = 'Coverage is unchanged.';
     } else if (difference > 0) {
-        description = `Coverage up by ${difference}%`;
+        description = `Coverage up by ${Math.abs(difference)}%`;
     } else {
-        description = `Coverage down by ${difference}%`;
+        description = `Coverage down by ${Math.abs(difference)}%`;
     }
 
     let emoji;
