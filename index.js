@@ -48,7 +48,7 @@ async function handle() {
         console.warn(error);
     }
 
-    const difference = localCoverage - remoteCoverage;
+    const difference = Number(localCoverage - remoteCoverage).toFixed(2);
     let description;
 
     if (difference === 0.00) {
@@ -59,8 +59,18 @@ async function handle() {
         description = `Coverage down by ${difference}%`;
     }
 
+    let emoji;
+    if (difference >= 0) {
+        emoji = ':white_check_mark:';
+    } else if (difference >= -1) {
+        emoji = ':warning:'
+    } else {
+        emoji = ':x:';
+    }
+
     core.setOutput('description', description);
-    core.setOutput('difference', difference > 0 ? `Coverage up by ${difference}%` : `Coverage down by ${difference}%`)
+    core.setOutput('emoji', emoji);
+    core.setOutput('difference', difference);
 
 }
 
