@@ -49,14 +49,15 @@ async function handle() {
     }
 
     const difference = Number(localCoverage - remoteCoverage).toFixed(2);
+    const localPercent = `${localCoverage.toFixed(2)}%`;
     let description;
 
     if (difference === 0.00) {
-        description = 'Coverage is unchanged.';
+        description = `Coverage is ${localPercent} - unchanged.`;
     } else if (difference > 0) {
-        description = `Coverage up by ${Math.abs(difference)}%`;
+        description = `Coverage is ${localPercent} - up by ${Math.abs(difference)}%`;
     } else {
-        description = `Coverage down by ${Math.abs(difference)}%`;
+        description = `Coverage is ${localPercent} - down by ${Math.abs(difference)}%`;
     }
 
     let emoji;
