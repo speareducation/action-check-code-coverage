@@ -5,3 +5,4 @@ error_log
 npm-debug.log
 yarn-error.log
 .eslintcache
+/node_modules
