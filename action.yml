@@ -18,5 +18,5 @@ outputs:
     description: The emoji to be used along with the difference
 
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'index.js'
