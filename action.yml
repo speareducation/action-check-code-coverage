@@ -8,14 +8,21 @@ inputs:
     description: The file in which code coverage results can be found.
   remoteFile:
     description: The file in S3 to compare
+  failureThreshold:
+    description: |
+      The threshold (typically a negative integer) which triggers a failure. 
+      Please note this action must not, itself, fail due to this. It simply triggers an output boolean
+    default: null
 
 outputs:
   description:
-    description: A user-friendly sentence describing the state of coverage.
+    description: String; A user-friendly sentence describing the state of coverage.
   difference:
-    description: The difference in coverage as a decimal. example -5.25 or 5.25
+    description: Number; The difference in coverage as a decimal. example -5.25 or 5.25
   emoji:
-    description: The emoji to be used along with the difference
+    description: String; The emoji to be used along with the difference
+  failure:
+    description: Boolean; Whether the coverage check exceeds the threshold
 
 runs:
   using: 'node20'

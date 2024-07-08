@@ -7,6 +7,7 @@ const { parseCoverage } = require('./src/parse-coverage.js');
 const inputBucket = core.getInput('bucket');
 const inputLocalFile = core.getInput('localFile');
 const inputRemoteFile = core.getInput('remoteFile');
+const inputFailureThreshold = core.getInput('failureThreshold');
 
 /**
  * Main Handler
@@ -55,6 +56,8 @@ async function handle() {
     core.setOutput('emoji', emoji);
     core.setOutput('difference', difference);
 
+    // true if inputFailureThreshold is truthy and "difference" dips lower than it
+    core.setOutput('failure', inputFailureThreshold && difference < inputFailureThreshold);
 }
 
 handle().catch(error => core.setFailed(error));
