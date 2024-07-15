@@ -57,7 +57,11 @@ async function handle() {
     core.setOutput('difference', difference);
 
     // true if inputFailureThreshold is truthy and "difference" dips lower than it
-    core.setOutput('failure', inputFailureThreshold && difference < inputFailureThreshold);
+    if (inputFailureThreshold) {
+        core.setOutput('failure', difference < Number(inputFailureThreshold));
+    } else {
+        core.setOutput('failure', false);
+    }
 }
 
 handle().catch(error => core.setFailed(error));
